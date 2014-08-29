@@ -1,31 +1,31 @@
 Rails.application.routes.draw do
 
-  #resources :manufactures, only: [:index, :show] do
-    #collection do
-      #get :begins_with_g
-    #end
+  resources :manufactures do #, only: [:index, :show] do
+    collection do
+      get :begins_with_g
+    end
 
-    #member do
-      #get :sucks
-    #end
+    member do
+      get :sucks
+    end
 
-    #resources :products, only: [:show]
+    resources :products, only: [:show]
 
-    #resource :detail, only: [:show]
-  #end
+    resource :detail, only: [:show]
+  end
 
-  #refazendo rotas do resource
+  # refazendo rotas do resource
 
 
-  get 'manufactures/begins_with_g', to: 'manufactures#begins_with_g'
-  get 'manufactures/:id/sucks', to: 'manufactures#sucks'
-  get 'manufactures', to: "manufactures#index"
-  get 'manufactures/:id', to: 'manufactures#show'
+  # get 'manufactures/begins_with_g', to: 'manufactures#begins_with_g'
+  # get 'manufactures/:id/sucks', to: 'manufactures#sucks'
+  # get 'manufactures', to: 'manufactures#index'
 
-  get 'manufactures/:manufacture_id/products', to: 'products#show'
+  # get 'manufactures/:id', to: 'manufactures#show'
 
-  get 'manufactures/:manufacture_id/detail', to: 'detail#show'
+  # get 'manufactures/:manufacture_id/products', to: 'products#show'
 
+  # get 'manufactures/:manufacture_id/detail', to: 'detail#show'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

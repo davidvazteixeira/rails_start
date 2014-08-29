@@ -1,1 +1,10 @@
 <p>Manufactures index</p>
+<p>Ford</p>
+<p>GM</p>
+<p>BMW</p>
+
+<%= link_to manufacture_path(id: 3), [:manufacture, {id: 3}] %>
+<br>
+<%= link_to manufacture_url(protoco: 'ftp', host: 'bla.com', id: 3), manufacture_url(id: 3) %>
+<br>
+<%= link_to 'Delete', manufacture_url(id: 3), method: :delete %>

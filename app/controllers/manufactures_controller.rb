@@ -15,6 +15,12 @@ class ManufacturesController < ApplicationController
     @manufacturer = name_of(params[:id])
   end 
 
+  def destroy
+    puts 'Deleted: '
+    puts params[:id]
+    #redirect_to manufactures_path
+  end
+
   private
 
     def name_of id
