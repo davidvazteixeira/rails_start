@@ -16,10 +16,10 @@ class ManufacturesController < ApplicationController
   end
 
   def update
-    @manufacture = Manufacture.find(params[:id])
-    @manufacture.name = params[:manufacture][:name]
-    @manufacture.save
-
+    #@manufacture = Manufacture.find(params[:id])
+    #@manufacture.name = params[:manufacture][:name]
+    #@manufacture.save
+    Manufacture.update(params[:id], update_params )
     redirect_to manufactures_path
   end
 
@@ -51,7 +51,7 @@ class ManufacturesController < ApplicationController
   end 
 
   private
-  
+
     def name_of id
       if id.to_i == 1
         @manufacturer = "BMW"
@@ -60,6 +60,10 @@ class ManufacturesController < ApplicationController
       else
         @manufacturer = "Ford"
       end
+    end
+
+    def update_params
+      params[:manufacture].permit(:name)
     end
 
 end
