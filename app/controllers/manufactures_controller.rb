@@ -24,13 +24,16 @@ class ManufacturesController < ApplicationController
   end
 
   def new
-    @manufacture = Manufacture.new
+    @manufacturer = Manufacture.new
   end
 
   def create
-    @manufacture = Manufacture.new
-    @manufacture.name = params[:manufacture][:name]
-    @manufacture.save
+    #@manufacture = Manufacture.new
+    #@manufacture.name = params[:manufacture][:name]
+    #@manufacture.save
+
+    Manufacture.create(create_params) 
+
     redirect_to manufactures_path
   end
 
@@ -63,6 +66,10 @@ class ManufacturesController < ApplicationController
     end
 
     def update_params
+      params[:manufacture].permit(:name)
+    end
+
+    def create_params
       params[:manufacture].permit(:name)
     end
 
