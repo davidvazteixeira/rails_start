@@ -1,7 +1,8 @@
 class ManufacturesController < ApplicationController
   
-  # CRUD - Start
+  respond_to :html 
 
+  # CRUD - Start
   def index
     @manufactures = Manufacture.all
   end
@@ -19,8 +20,9 @@ class ManufacturesController < ApplicationController
     #@manufacture = Manufacture.find(params[:id])
     #@manufacture.name = params[:manufacture][:name]
     #@manufacture.save
-    Manufacture.update(params[:id], update_params )
-    redirect_to manufactures_path
+    #Manufacture.update(params[:id], update_params )
+    respond_with Manufacture.update(params[:id], update_params), location: [:manufactures]
+    #redirect_to manufactures_path
   end
 
   def new
@@ -32,15 +34,14 @@ class ManufacturesController < ApplicationController
     #@manufacture.name = params[:manufacture][:name]
     #@manufacture.save
 
-    Manufacture.create(create_params) 
-
-    redirect_to manufactures_path
+    respond_with Manufacture.create(create_params) 
+    #redirect_to manufactures_path
   end
 
   def destroy
     #@manufacture = Manufacture.find(params[:id])
-    Manufacture.destroy(params[:id])
-    redirect_to manufactures_path
+    respond_with Manufacture.destroy(params[:id])
+    #redirect_to manufactures_path
   end
 
   # CRUD End
