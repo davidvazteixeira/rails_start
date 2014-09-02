@@ -1,28 +1,57 @@
 class ManufacturesController < ApplicationController
   
+  # CRUD - Start
+
   def index
+    @manufactures = Manufacture.all
   end
 
   def show
-    @manufacturer = name_of(params[:id])
+    #@manufacturer = name_of(params[:id])
+    @manufacturer = Manufacture.find(params[:id])
   end
+
+  def edit
+    @manufacturer = Manufacture.find(params[:id])
+  end
+
+  def update
+    @manufacture = Manufacture.find(params[:id])
+    @manufacture.name = params[:manufacture][:name]
+    @manufacture.save
+
+    redirect_to manufactures_path
+  end
+
+  def new
+    @manufacture = Manufacture.new
+  end
+
+  def create
+    @manufacture = Manufacture.new
+    @manufacture.name = params[:manufacture][:name]
+    @manufacture.save
+    redirect_to manufactures_path
+  end
+
+  def destroy
+    @manufacture = Manufacture.find(params[:id])
+    @manufacture.destroy
+    redirect_to manufactures_path
+  end
+
+  # CRUD End
+
+  def sucks
+    @manufacturer = name_of(params[:id])
+  end  
 
   def begins_with_g
     @order = params[:order]
   end 
 
-  def sucks
-    @manufacturer = name_of(params[:id])
-  end 
-
-  def destroy
-    puts 'Deleted: '
-    puts params[:id]
-    #redirect_to manufactures_path
-  end
-
   private
-
+  
     def name_of id
       if id.to_i == 1
         @manufacturer = "BMW"

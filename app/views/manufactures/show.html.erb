@@ -1,1 +1,17 @@
-<p> Show: <%=  @manufacturer %> </p>
+<ul>
+<% for attribute in @manufacturer.attributes %>
+  
+  
+    <dd>
+      <%= attribute[0] %>   
+    </dd>
+    <dt>
+      <%= attribute[1] %> 
+    </dt>
+  
+<% end %>
+</dl>
+
+<%= link_to "Manufactures", manufactures_path %>
+
+</p>
