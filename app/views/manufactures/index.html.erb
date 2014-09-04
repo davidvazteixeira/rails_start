@@ -1,21 +1,15 @@
 <p>Manufactures index</p>
 
 <p>
-  
-<% for manufacture in @manufactures  %>
-  
-  <%= manufacture.name %> <%= link_to "Show", manufacture_path(manufacture) %> <%= link_to "Edit", edit_manufacture_path(manufacture) %>
-  <%= link_to 'Delete', manufacture_path(manufacture), method: :delete %>
-  <br />
-
-<% end %>
-
+	<% for manufacture in @manufactures  %>
+		<%= manufacture.name %> <%= link_to "Show", manufacture_path(manufacture) %> <%= link_to "Edit", edit_manufacture_path(manufacture) %>
+		<%= link_to 'Delete', manufacture_path(manufacture), method: :delete %>
+		<br />
+	<% end %>
 </p>
 
 <%= link_to 'New', new_manufacture_path %>
 
-<%= link_to manufacture_path(id: 3), [:manufacture, {id: 3}] %>
-<br>
-<%= link_to manufacture_url(protoco: 'ftp', host: 'bla.com', id: 3), manufacture_url(id: 3) %>
-<br>
-<%= link_to 'Delete', manufacture_url(id: 3), method: :delete %>
+<%#= link_to manufacture_path(id: 3), [:manufacture, {id: 3}] %>
+<%#= link_to manufacture_url(protoco: 'ftp', host: 'bla.com', id: 3), manufacture_url(id: 3) %>
+<%#= link_to 'Delete', manufacture_url(id: 3), method: :delete %>

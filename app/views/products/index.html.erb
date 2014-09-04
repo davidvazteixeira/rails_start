@@ -1,0 +1,17 @@
+|<%= link_to "Manufactures", manufactures_path %>
+|<%= link_to "Products", manufacture_products_path(params[:manufacture_id]) %>
+|
+
+<p>Products index</p>
+
+<ul>
+<% Product.where(:manufacture_id => params[:manufacture_id]).each do |product| %>
+
+	<%= product.id %>
+	<li><%= link_to product.name, manufacture_product_path(params[:manufacture_id],product.id) %></li>
+<% end %>
+</ul>
+
+
+<%= link_to 'New', new_manufacture_product_path %>
+

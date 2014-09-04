@@ -9,13 +9,12 @@ Rails.application.routes.draw do
       get :sucks
     end
 
-    resources :products, only: [:show]
+    resources :products #, only: [:show]
 
     resource :detail, only: [:show]
   end
 
   # refazendo rotas do resource
-
 
   # get 'manufactures/begins_with_g', to: 'manufactures#begins_with_g'
   # get 'manufactures/:id/sucks', to: 'manufactures#sucks'

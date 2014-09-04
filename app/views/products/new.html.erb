@@ -1,0 +1,16 @@
+<p> New Product of <%= @manufacture.name %> </p>
+
+<ul>
+	<%= form_for [@manufacture, @product] do |f| %>
+
+	<dl>
+		<% [:name, :engine, :tire].each do |product| %>
+			<dt><%= product %>:</dt>
+			<dd><%= f.text_field product %></dd>
+		<% end %>
+	</dl>
+
+	<%= f.submit %>
+
+	<% end %>
+</ul>
