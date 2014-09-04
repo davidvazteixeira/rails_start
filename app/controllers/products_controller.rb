@@ -6,45 +6,55 @@ class ProductsController < ApplicationController
 	end
 
 	def new
-		manufacture
-		@product = Product.new
+		@product = products.new
+		#@product = Product.new
 	end
 
 	def create
 		#@manufacture = Manufacture.find(params[:manufacture_id])
 
-		@product = Product.new
-		@product.name = params[:product][:name]
-		@product.engine = params[:product][:engine]
-		@product.tire = params[:product][:tire]
-		@product.manufacture_id = params[:manufacture_id]
-		@product.save
+		#@product = Product.new
+		#@product.name = params[:product][:name]
+		#@product.engine = params[:product][:engine]
+		#@product.tire = params[:product][:tire]
+		#@product.manufacture_id = params[:manufacture_id]
 
-		respond_with(manufacture, @product)
+		#@product = Product.create(create_params) do |u|
+		#	u.manufacture_id = params[:manufacture_id]
+		#end
+
+		respond_with(manufacture, products.create(create_params))
 
 	end
 
 	def edit
 		#@manufacture = Manufacture.find(params[:manufacture_id])]@manufacture = manufacture
-		manufacture
-		@product = Product.find(params[:id])
+
+		#manufacture
+		#@product = Product.find(params[:id])
+		@product = products.find(params[:id])
 	end
 
 	def update
 		#@manufacture = Manufacture.find(params[:manufacture_id])
-		@product = Product.find(params[:id])
-		@product.name = params[:product][:name]
-		@product.engine = params[:product][:engine]
-		@product.tire = params[:product][:tire]
-		@product.save
+		#@product = Product.find(params[:id])
+		#@product.name = params[:product][:name]
+		#@product.engine = params[:product][:engine]
+		#@product.tire = params[:product][:tire]
+		#@product.save
 
-		respond_with(manufacture, @product)
+		respond_with(manufacture, products.update(params[:id], update_params))
+
 	end
 
 	private
 
 		def manufacture
 			@manufacture ||= Manufacture.find(params[:manufacture_id])
+		end
+
+		def products
+			manufacture.products
 		end
 
 		def create_params
