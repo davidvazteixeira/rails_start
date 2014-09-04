@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
 		@product.tire = params[:product][:tire]
 		@product.manufacture_id = params[:manufacture_id]
 		@product.save
+
 		respond_with(@manufacture, @product)
 
 	end
