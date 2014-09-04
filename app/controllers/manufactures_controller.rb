@@ -1,6 +1,6 @@
 class ManufacturesController < ApplicationController
-  
-  respond_to :html 
+
+  respond_to :html
 
   # CRUD - Start
   def index
@@ -34,7 +34,7 @@ class ManufacturesController < ApplicationController
     #@manufacture.name = params[:manufacture][:name]
     #@manufacture.save
 
-    respond_with Manufacture.create(create_params) 
+    respond_with Manufacture.create(create_params), location: [:manufactures]
     #redirect_to manufactures_path
   end
 
@@ -48,11 +48,11 @@ class ManufacturesController < ApplicationController
 
   def sucks
     @manufacturer = name_of(params[:id])
-  end  
+  end
 
   def begins_with_g
     @order = params[:order]
-  end 
+  end
 
   private
 

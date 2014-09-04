@@ -1,1 +1,23 @@
-<p>Products of <%= @manufacture %></p>
+|<%= link_to "Manufactures", manufactures_path %>
+|<%= link_to "Products", manufacture_products_path(params[:id]) %>
+|
+
+<%
+@manufacture = Manufacture.find(params[:manufacture_id])
+@product = Product.find(params[:id])
+%>
+
+<p><%= @manufacture.name %> product: </p>
+
+<ul>
+<% [:name, :engine, :tire].each do |propertie| %>
+	<li><%= propertie.capitalize %></li>
+	<ul>
+		<li> <%= @product[propertie] %></li>
+	</ul>
+<% end %>
+</ul>
+
+|<%= link_to "Edit", edit_manufacture_product_path(params[:manufacture_id], params[:id]) %> |
+
+
