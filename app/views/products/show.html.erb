@@ -9,14 +9,13 @@
 
 <p><%= @manufacture.name %> product: </p>
 
-<ul>
-<% [:name, :engine, :tire].each do |propertie| %>
-	<li><%= propertie.capitalize %></li>
-	<ul>
-		<li> <%= @product[propertie] %></li>
-	</ul>
-<% end %>
-</ul>
+<dl>
+	<% [:name, :engine, :tire].each do |propertie| %>
+	<dt><%= propertie.capitalize %></dt>
+	<dd><%= @product[propertie] %></dd>
+	<% end %>
+</dl>
+
 
 |<%= link_to "Edit", edit_manufacture_product_path(params[:manufacture_id], params[:id]) %> |
 

@@ -1,14 +1,10 @@
 |<%= link_to "Manufactures", manufactures_path %>
 |<%= link_to "Products", manufacture_products_path(params[:id]) %>
 |
+
 <ul>
-<% @manufacturer.attributes.each do |attribute| %>
-    <li><%= attribute[0] %></li>
-		<ul>
-			<li><%= attribute[1] %></li>
-		</ul>
-
-<% end %>
+	<% @manufacture.attributes.each do |attribute| %>
+		<li style="font-weight: bold;"><%= attribute[0] %></li>
+		<dd><%= attribute[1] %></dd>
+	<% end %>
 </ul>
-
-</p>

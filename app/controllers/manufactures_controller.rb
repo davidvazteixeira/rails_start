@@ -8,7 +8,7 @@ class ManufacturesController < ApplicationController
 
   def show
     #@manufacturer = name_of(params[:id])
-    @manufacturer = Manufacture.find(params[:id])
+    @manufacture = Manufacture.find(params[:id])
   end
 
   def edit
