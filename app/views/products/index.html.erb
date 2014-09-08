@@ -7,7 +7,6 @@
 <ul>
 <% Product.where(:manufacture_id => params[:manufacture_id]).each do |product| %>
 
-	<%= product.id %>
 	<li><%= link_to product.name, manufacture_product_path(params[:manufacture_id],product.id) %></li>
 <% end %>
 </ul>

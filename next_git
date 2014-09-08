@@ -1,0 +1,1 @@
+Destroy manufacture dependents; fix some erbs; migration name => Product model; More text_fields to manufacture/new; Manufacture validation with error message; Products validation with error message;

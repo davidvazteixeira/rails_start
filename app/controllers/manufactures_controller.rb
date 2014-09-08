@@ -2,7 +2,6 @@ class ManufacturesController < ApplicationController
 
   respond_to :html
 
-  # CRUD - Start
   def index
     @manufactures = Manufacture.all
   end
@@ -13,7 +12,7 @@ class ManufacturesController < ApplicationController
   end
 
   def edit
-    @manufacturer = Manufacture.find(params[:id])
+    @manufacture = Manufacture.find(params[:id])
   end
 
   def update
@@ -26,7 +25,7 @@ class ManufacturesController < ApplicationController
   end
 
   def new
-    @manufacturer = Manufacture.new
+    @manufacture = Manufacture.new
   end
 
   def create
@@ -34,7 +33,17 @@ class ManufacturesController < ApplicationController
     #@manufacture.name = params[:manufacture][:name]
     #@manufacture.save
 
-    respond_with Manufacture.create(create_params), location: [:manufactures]
+		@manufacture = Manufacture.create(create_params)
+
+		if @manufacture
+			respond_with @manufacture, location: [:manufactures]
+		else
+			render 'new'
+		end
+
+		#@manufacture = Manufacture.create(create_params)
+
+    #respond_with @manufacure, location: [:manufactures]
     #redirect_to manufactures_path
   end
 
@@ -43,8 +52,6 @@ class ManufacturesController < ApplicationController
     respond_with Manufacture.destroy(params[:id])
     #redirect_to manufactures_path
   end
-
-  # CRUD End
 
   def sucks
     @manufacturer = name_of(params[:id])
@@ -67,11 +74,11 @@ class ManufacturesController < ApplicationController
     end
 
     def update_params
-      params[:manufacture].permit(:name)
+      params[:manufacture].permit(:name, :gross, :active, :rate)
     end
 
     def create_params
-      params[:manufacture].permit(:name)
+      params[:manufacture].permit(:name, :gross, :active, :rate)
     end
 
 end

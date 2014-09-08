@@ -1,6 +1,20 @@
-<%= form_for @manufacturer do |f| %>
+<%= form_for @manufacture do |f| %>
 
-  <%= f.text_field :name %>
+	<% if @manufacture.errors.any? %>
+		<ul>
+			<% @manufacture.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	<% end %>
+
+	<dl>
+		<% [:name, :gross, :active, :rate].each do |attribute| %>
+			<dt><%= attribute %></dt>
+			<dd><%= f.text_field attribute %></dd>
+		<% end %>
+	</dl>
+
   <%= f.submit %>
 
 <% end %>

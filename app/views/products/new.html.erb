@@ -1,16 +1,23 @@
+|<%= link_to "Manufactures", manufactures_path %>
+|<%= link_to "Products", manufacture_products_path(params[:manufacture_id]) %>
+|
+
 <p> New Product of <%= @manufacture.name %> </p>
 
-<ul>
-	<%= form_for [@manufacture, @product] do |f| %>
+<% if @product.errors.any? %>
+	<ul>
+		<% @product.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		<% end %>
+	</ul>
+<% end %>
 
+<%= form_for [@manufacture, @product] do |f| %>
 	<dl>
 		<% [:name, :engine, :tire].each do |product| %>
 			<dt><%= product %>:</dt>
 			<dd><%= f.text_field product %></dd>
 		<% end %>
 	</dl>
-
 	<%= f.submit %>
-
-	<% end %>
-</ul>
+<% end %>
