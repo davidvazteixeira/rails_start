@@ -1,19 +1,10 @@
+|<%= link_to "Manufactures", manufactures_path %>
+|
 <%= simple_form_for @manufacture do |f| %>
 
-	<% if @manufacture.errors.any? %>
-		<ul>
-			<% @manufacture.errors.full_messages.each do |message| %>
-			<li> <%= message %></li>
-			<% end %>
-		</ul>
+	<% [:name, :gross, :active, :rate].each do |attribute| %>
+		<%= f.input attribute %>
 	<% end %>
-
-	<dl>
-		<% [:name, :gross, :active, :rate].each do |attribute| %>
-			<dt><%= attribute %></dt>
-			<dd><%= f.text_field attribute %></dd>
-		<% end %>
-	</dl>
 
   <%= f.submit %>
 

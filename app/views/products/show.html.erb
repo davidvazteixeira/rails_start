@@ -2,11 +2,6 @@
 |<%= link_to "Products", manufacture_products_path(params[:manufacture_id]) %>
 |
 
-<%
-@manufacture = Manufacture.find(params[:manufacture_id])
-@product = Product.find(params[:id])
-%>
-
 <p><%= @manufacture.name %> product: </p>
 
 <dl>
@@ -18,5 +13,3 @@
 
 
 |<%= link_to "Edit", edit_manufacture_product_path(params[:manufacture_id], params[:id]) %> |
-
-

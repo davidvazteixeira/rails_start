@@ -12,11 +12,11 @@
 	</ul>
 <% end %>
 
-<%= form_for [@manufacture, @product] do |f| %>
+<%= simple_form_for [@manufacture, @product] do |f| %>
 	<dl>
 		<% [:name, :engine, :tire].each do |product| %>
 			<dt><%= product %>:</dt>
-			<dd><%= f.text_field product %></dd>
+			<dd><%= f.input product %></dd>
 		<% end %>
 	</dl>
 	<%= f.submit %>

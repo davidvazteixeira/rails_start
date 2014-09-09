@@ -3,7 +3,7 @@
 <%#= @manufacture.errors.messages %>
 
 	<ul>
-		<% for manufacture in @manufactures  %>
+		<% @manufactures.each do |manufacture|  %>
 			<li style="font-weight: bold;"> <%= manufacture.name %></li> <li> <%= link_to "Show", manufacture_path(manufacture) %> <%= link_to "Edit", edit_manufacture_path(manufacture) %>
 		<%= link_to 'Delete', manufacture_path(manufacture), method: :delete %></li>
 		<% end %>

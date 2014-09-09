@@ -4,14 +4,12 @@
 
 <p>Products index</p>
 
-
 <ul>
-<% Product.where(:manufacture_id => params[:manufacture_id]).each do |product| %>
-
-	<li><%= link_to product.name, manufacture_product_path(params[:manufacture_id],product.id) %></li>
-<% end %>
+	<% @products.each do |product| %>
+		<li>
+			<%= link_to product.name, manufacture_product_path(params[:manufacture_id],product.id) %>
+		</li>
+	<% end %>
 </ul>
 
-
 <%= link_to 'New', new_manufacture_product_path %>
-

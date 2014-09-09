@@ -7,7 +7,6 @@ class ManufacturesController < ApplicationController
   end
 
   def show
-    #@manufacturer = name_of(params[:id])
     @manufacture = Manufacture.find(params[:id])
   end
 
@@ -16,12 +15,7 @@ class ManufacturesController < ApplicationController
   end
 
   def update
-    #@manufacture = Manufacture.find(params[:id])
-    #@manufacture.name = params[:manufacture][:name]
-    #@manufacture.save
-    #Manufacture.update(params[:id], update_params )
     respond_with Manufacture.update(params[:id], update_params), location: [:manufactures]
-    #redirect_to manufactures_path
   end
 
   def new
@@ -29,10 +23,6 @@ class ManufacturesController < ApplicationController
   end
 
   def create
-    #@manufacture = Manufacture.new
-    #@manufacture.name = params[:manufacture][:name]
-    #@manufacture.save
-
 		@manufacture = Manufacture.create(create_params)
 
 		if @manufacture
@@ -40,17 +30,10 @@ class ManufacturesController < ApplicationController
 		else
 			render 'new'
 		end
-
-		#@manufacture = Manufacture.create(create_params)
-
-    #respond_with @manufacure, location: [:manufactures]
-    #redirect_to manufactures_path
-  end
+	end
 
   def destroy
-    #@manufacture = Manufacture.find(params[:id])
     respond_with Manufacture.destroy(params[:id])
-    #redirect_to manufactures_path
   end
 
   def sucks
