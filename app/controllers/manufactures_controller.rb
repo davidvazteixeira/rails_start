@@ -7,30 +7,24 @@ class ManufacturesController < ApplicationController
   end
 
   def show
-    @manufacture = Manufacture.find(params[:id])
+    respond_with manufacture
   end
 
   def edit
-    @manufacture = Manufacture.find(params[:id])
+    respond_with manufacture
   end
 
-  def update
-    respond_with Manufacture.update(params[:id], update_params), location: [:manufactures]
+	def update
+		respond_with @manufacture = Manufacture.update(params[:id], update_params), location: [:manufactures]
   end
 
   def new
-    @manufacture = Manufacture.new
+		@manufacture = Manufacture.new
   end
 
   def create
-		@manufacture = Manufacture.create(create_params)
-
-		if @manufacture
-			respond_with @manufacture, location: [:manufactures]
-		else
-			render 'new'
-		end
-	end
+		respond_with @manufacture = Manufacture.create(create_params)
+  end
 
   def destroy
     respond_with Manufacture.destroy(params[:id])
@@ -46,22 +40,26 @@ class ManufacturesController < ApplicationController
 
   private
 
-    def name_of id
-      if id.to_i == 1
-        @manufacturer = "BMW"
-      elsif id.to_i == 2
-        @manufacturer = "GM"
-      else
-        @manufacturer = "Ford"
-      end
-    end
+	def manufacture
+		@manufacture ||= Manufacture.find(params[:id])
+	end
 
-    def update_params
-      params[:manufacture].permit(:name, :gross, :active, :rate)
-    end
+	def name_of id
+		if id.to_i == 1
+		  @manufacturer = "BMW"
+		elsif id.to_i == 2
+		  @manufacturer = "GM"
+		else
+		  @manufacturer = "Ford"
+		end
+	end
 
-    def create_params
-      params[:manufacture].permit(:name, :gross, :active, :rate)
-    end
+	def update_params
+	params[:manufacture].permit(:name, :gross, :active, :rate)
+	end
+
+	def create_params
+	params[:manufacture].permit(:name, :gross, :active, :rate)
+	end
 
 end

@@ -3,31 +3,27 @@ class ProductsController < ApplicationController
 	respond_to :html
 
 	def index
-		@products = products
+		products
 	end
 
 	def show
-		@manufacture = Manufacture.find(params[:manufacture_id])
-		@product = Product.find(params[:id])
+		product
 	end
 
 	def new
-		@manufacture = Manufacture.find(params[:manufacture_id])
-		@product = Product.new
+		@product = products.new
 	end
 
 	def create
-		@product = products.create(create_params)
-		respond_with(manufacture, @product)
+		respond_with manufacture, @product = products.create(create_params)
 	end
 
 	def edit
-		@product = products.find(params[:id])
+		product
 	end
 
 	def update
-		@product = products.update(params[:id], update_params)
-		respond_with(manufacture, @product)
+		respond_with manufacture, @product = products.update(params[:id], update_params)
 	end
 
 	private
@@ -36,8 +32,12 @@ class ProductsController < ApplicationController
 			@manufacture ||= Manufacture.find(params[:manufacture_id])
 		end
 
+		def product
+			@product ||= products.find(params[:id])
+		end
+
 		def products
-			manufacture.products
+			@products ||= manufacture.products
 		end
 
 		def create_params
