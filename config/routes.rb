@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :users
+
   resources :manufactures do #, only: [:index, :show] do
     collection do
       get :begins_with_g
