@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :users
+  resources :sessions
 
   resources :manufactures do #, only: [:index, :show] do
     collection do
