@@ -6,15 +6,19 @@ class SessionsController < ApplicationController
 
 		if user_auth?
 			session[:user_id] = @user.id
-			redirect_to manufactures_path, notice: "You are in!"
-			@message = 'OK!'
+			redirect_to manufactures_path
 		else
-			flash.now.alert = "Try again..."
-			@message = params[:sessions][:email]
+			flash[:warning] = "Trouble!"
 			render 'new'
 		end
 
 	end
+
+  def destroy
+    session[:user_id] = nil
+    flash[:notice] = "Goog bye!"
+    redirect_to manufactures_path
+  end
 
 private
 

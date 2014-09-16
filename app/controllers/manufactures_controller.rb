@@ -1,4 +1,5 @@
 class ManufacturesController < ApplicationController
+  before_filter :authorize, only: [:new, :create, :destroy, :edit, :update]
 
   respond_to :html
 

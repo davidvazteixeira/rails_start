@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'register', to: 'users#new', as: 'register'
+
   resources :users
   resources :sessions
 

@@ -8,10 +8,18 @@
 </head>
 <body>
 
-	<li>
-		<%= link_to 'Register', new_user_path %> or
-		<%= link_to 'Enter', new_session_path %>
-	</li>
+  <% if current_user %>
+    Hi <%= current_user.email%> <%= link_to "(get out!)", logout_path %>
+  <% else %>
+      <%= link_to 'Register', register_path %> or
+      <%= link_to 'Enter', login_path %>
+  <% end %>
+
+
+  <hr />
+  <%= flash_message %>
+
+
 
 	<%= yield %>
 
