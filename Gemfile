@@ -40,3 +40,6 @@ gem 'spring',        group: :development
 
 # Simple_form
 gem 'simple_form'
+
+# Devise
+gem 'devise'

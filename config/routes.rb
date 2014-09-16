@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :manufactures do #, only: [:index, :show] do
+  devise_for :users
+
+  resources :manufactures do
     collection do
       get :begins_with_g
     end
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
 
     resource :detail, only: [:show]
   end
+
+  root 'manufactures#index'
 
   # refazendo rotas do resource
 
