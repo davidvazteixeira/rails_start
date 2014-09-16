@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, path_names: {sign_in: "enter", sign_out: "exit", sign_up: "start"}
 
   resources :manufactures do
     collection do
