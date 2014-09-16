@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 	def create
 	  @user = User.new(create_params)
 	  if @user.save
+      session[:user_id] = @user.id
 			redirect_to manufactures_path, notice: "Account Created."
 		else
 			render 'new'
