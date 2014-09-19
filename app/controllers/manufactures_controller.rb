@@ -56,11 +56,11 @@ class ManufacturesController < ApplicationController
 	end
 
 	def update_params
-	params[:manufacture].permit(:name, :gross, :active, :rate)
+    params[:manufacture].permit(:name, :gross, :active, :rate)
 	end
 
 	def create_params
-	params[:manufacture].permit(:name, :gross, :active, :rate)
+    params[:manufacture].permit(:name, :gross, :active, :rate)
 	end
 
 end

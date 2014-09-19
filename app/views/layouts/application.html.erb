@@ -36,6 +36,22 @@
       </div>
     </div>
 
+    <%= flash_message %>
+
+    <ol class="breadcrumb">
+      <% if params[:controller] == "manufactures" %>
+        <li><%= link_to "Manufactures", manufactures_path %></li>
+        <% if params[:id] %>
+          <li><%= link_to "Products", manufacture_products_path(params[:id]) %></li>
+        <% end %>
+      <% end %>
+
+      <% if params[:controller] == "products" %>
+        <li><%= link_to "Manufactures", manufactures_path %></li>
+        <li><%= link_to "Products", manufacture_products_path(params[:manufacture_id]) %></li>
+      <% end %>
+    </ol>
+
     <div class="container">
       <% if current_user %>
         Hi <%= current_user.email%> <%= link_to "(get out!)", logout_path %>
@@ -43,7 +59,6 @@
           <%= link_to 'Register', register_path %> or
           <%= link_to 'Enter', login_path %>
       <% end %>
-      <%= flash_message %>
 
       <%= yield %>
     </div>

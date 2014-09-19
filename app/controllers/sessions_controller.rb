@@ -6,9 +6,10 @@ class SessionsController < ApplicationController
 
 		if user_auth?
 			session[:user_id] = @user.id
+      flash[:danger] = "You're in."
 			redirect_to manufactures_path
 		else
-			flash[:warning] = "Trouble!"
+			flash[:danger] = "Trouble!"
 			render 'new'
 		end
 
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    flash[:notice] = "Goog bye!"
+    flash[:info] = "Goog bye!"
     redirect_to manufactures_path
   end
 

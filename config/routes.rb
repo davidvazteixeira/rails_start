@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'register', to: 'users#new', as: 'register'
 
+	root 'manufactures#index'
+
   resources :users
   resources :sessions
 

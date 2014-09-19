@@ -1,12 +1,9 @@
 |<%= link_to "Manufactures", manufactures_path %>
 |
-<%= simple_form_for @manufacture do |f| %>
 
+<%= simple_form_for(@manufacture, html: {class: 'form-vertical' }) do |f| %>
 	<% [:name, :gross, :active, :rate].each do |attribute| %>
 		<%= f.input attribute %>
 	<% end %>
-
-  <%= f.submit %>
-
+  <%= f.button :submit %>
 <% end %>
->
