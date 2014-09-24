@@ -1,12 +1,26 @@
 |<%= link_to "Manufactures", manufactures_path %>
 |
 <%#= @manufacture.errors.messages %>
-
-	<ul>
-		<% @manufactures.each do |manufacture|  %>
-			<li style="font-weight: bold;"> <%= manufacture.name %></li> <li> <%= link_to "Show", manufacture_path(manufacture) %> <%= link_to "Edit", edit_manufacture_path(manufacture) %>
-		<%= link_to 'Delete', manufacture_path(manufacture), method: :delete %></li>
-		<% end %>
-	</ul>
+<input id='checkall' type="checkbox"> Check all
 
 <%= link_to 'New', new_manufacture_path %>
+
+<div>
+  <div class='col-md-6'>
+    <%= simple_form_for(@manufacture = Manufacture.new, html: {class: 'form-vertical' }, remote: true) do |f| %>
+      <% [:name, :gross, :active, :rate].each do |attribute| %>
+        <%= f.input attribute %>
+      <% end %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+
+  <div class='col-md-6'>
+    <ul id='manufacture_list' >
+      <% @manufactures.each do |manufacture| %>
+        <%= render 'manufacture', manufacture: manufacture %>
+      <% end %>
+    </ul>
+  </div>
+
+</div>

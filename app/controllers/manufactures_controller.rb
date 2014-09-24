@@ -1,7 +1,7 @@
 class ManufacturesController < ApplicationController
   before_filter :authorize, only: [:new, :create, :destroy, :edit, :update]
 
-  respond_to :html
+  respond_to :html, :js
 
   def index
     @manufactures = Manufacture.all
@@ -28,7 +28,7 @@ class ManufacturesController < ApplicationController
   end
 
   def destroy
-    respond_with Manufacture.destroy(params[:id])
+    respond_with manufacture.destroy
   end
 
   def sucks

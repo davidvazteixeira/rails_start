@@ -1,0 +1,7 @@
+<li id="manufacture_<%= manufacture.id %>" >
+  <input class="item" type="checkbox">
+  <%= manufacture.name %>
+  <%= link_to "Show", manufacture_path(manufacture) %>
+  <%= link_to "Edit", edit_manufacture_path(manufacture) %>
+  <%= link_to "Delete", manufacture_path(manufacture), method: :delete, remote: true %>
+</li>
