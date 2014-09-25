@@ -1,16 +1,21 @@
 <li id="manufacture_<%= manufacture.id %>" >
   <input class="item" type="checkbox">
 
-  <button class='btn btn-primary' data-toggle='modal' data-target='#myModal'>
+  <!--button class='btn btn-primary' data-toggle='modal' data-target='#myModal'>
   show
-  </button>
+  </button -->
+
+  <a href = <%= manufacture_path(manufacture) %> class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  show
+  </a>
 
   <%= manufacture.name %>, with gross
   <%= manufacture.gross %>
   <%= 'is active' if manufacture.active %>
 
-  <%#= link_to "Show", manufacture_path(manufacture) %>
+  <%= link_to "Show", manufacture_path(manufacture) %>
 
   <%= link_to "Edit", edit_manufacture_path(manufacture) %>
   <%= link_to "Delete", manufacture_path(manufacture), method: :delete, remote: true %>
 </li>
+

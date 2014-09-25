@@ -8,7 +8,12 @@ class ManufacturesController < ApplicationController
   end
 
   def show
-    respond_with manufacture
+    @manufacture = manufacture
+    respond_to do |format|
+      format.js
+    end
+
+    #respond_with @manufacture = manufacture
   end
 
   def edit
