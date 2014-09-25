@@ -3,7 +3,10 @@
 <%#= @manufacture.errors.messages %>
 <input id='checkall' type="checkbox"> Check all
 
+<%= link_to 'new', manufactures_path %>
+
 <div>
+
 
   <div id='manufacture-container' class='col-md-6'>
     <%= render 'form' %>

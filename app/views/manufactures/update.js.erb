@@ -1,1 +1,5 @@
-$('#manufacture_<%= @manufacture.id %>').replaceWith('<%= j(render 'manufacture', manufacture: @manufacture) %>');
+<% if @manufacture.valid? %>
+  $('#manufacture_<%= @manufacture.id %>').replaceWith('<%= j(render 'manufacture', manufacture: @manufacture) %>');
+<% else %>
+  $('#manufacture-container').html('<%= j(render 'form') %>');
+<% end %>
