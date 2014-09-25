@@ -1,0 +1,6 @@
+<%= simple_form_for(@manufacture = Manufacture.new, html:{class: 'form-vertical' }, remote: true) do |f| %>
+  <% [:name, :gross, :active, :rate].each do |attribute| %>
+    <%= f.input attribute %>
+  <% end %>
+  <%= f.button :submit %>
+<% end %>

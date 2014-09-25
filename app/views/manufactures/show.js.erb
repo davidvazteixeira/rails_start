@@ -1,1 +1,4 @@
-$('#manufacture-modal-body').append('teste');
+$('#manufacture-modal-body').html('<%= j(render "show") %>');
+$('#manufacture-modal-title').html('<%= @manufacture.name %>');
+
+$('#myModal').modal({show: true})

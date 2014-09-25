@@ -3,16 +3,10 @@
 <%#= @manufacture.errors.messages %>
 <input id='checkall' type="checkbox"> Check all
 
-<%#= link_to 'New', new_manufacture_path %>
-
 <div>
+
   <div class='col-md-6'>
-    <%= simple_form_for(@manufacture = Manufacture.new, html:{class: 'form-vertical' }, remote: true) do |f| %>
-      <% [:name, :gross, :active, :rate].each do |attribute| %>
-        <%= f.input attribute %>
-      <% end %>
-      <%= f.button :submit %>
-    <% end %>
+    <%= render 'form' %>
   </div>
 
   <div class='col-md-6'>
@@ -29,7 +23,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="manufacure-modal-title">Modal title</h4>
+          <h4 class="modal-title" id="manufacture-modal-title">Modal title</h4>
         </div>
         <div id='manufacture-modal-body' class="modal-body">
 
